@@ -1,0 +1,41 @@
+It is a Python script for a voice authentication system. Here's a breakdown of the functionalities:
+
+Importing Libraries:
+
+numpy: Numerical computing library
+os: Operating system interaction
+glob: Finding all pathnames matching a specified pattern
+pickle: Serializing and deserializing Python object structures
+csv: Reading and writing CSV files
+time: Time-related functions
+pandas: Data analysis and manipulation library
+pyaudio: Python bindings for PortAudio library (audio recording)
+IPython.display: Used for displaying multimedia content within notebooks (commented out in this script)
+wave: Working with WAV audio files
+scipy.io.wavfile: Reading and writing WAV audio files
+sklearn.mixture: Gaussian Mixture Models for speaker modeling
+sklearn.preprocessing: Data preprocessing techniques
+python_speech_features: Feature extraction for speech recognition
+User Management:
+
+users: List to store registered usernames
+user_database/userLists.csv: CSV file containing a list of usernames
+add_user(): Function to add a new user. It prompts the user for their name, records their voice three times, extracts features (MFCCs), trains a Gaussian Mixture Model (GMM) for their voice, saves the GMM model, and updates the user list.
+check_user(): Function to check if a user exists in the database by name.
+delete_user(users): Function to delete a registered user. It removes the user's voice recordings, GMM model, and updates the user list and CSV file.
+Voice Authentication:
+
+recognize(): Function to perform voice authentication. It records a test audio sample, extracts MFCC features, calculates log-likelihood scores with each GMM model from the database, identifies the speaker with the highest score, and prints the recognized identity.
+Main Function:
+
+The script presents a menu with four options:
+Add user
+Delete user
+Check the existing user
+Authenticate yourself
+The user can select an option, and the corresponding function is executed.
+
+Note:
+
+This script uses pre-recorded voice samples for training and recognition. Real-time speaker identification can be achieved with additional libraries and modifications.
+Security considerations: Voice authentication systems can be vulnerable to spoofing attacks. It's recommended to use this script for educational purposes and explore additional security measures for real-world applications.
